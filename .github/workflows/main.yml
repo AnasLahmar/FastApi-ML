@@ -22,6 +22,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Extract version
+        id: extract_version
+        run: echo ::set-output name=version::v1.0.${{ github.run_number }}
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
@@ -30,3 +34,4 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest
             ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:${{ steps.extract_version.outputs.version }}
