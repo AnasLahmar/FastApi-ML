@@ -25,7 +25,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest  # Cette commande exécute tous les tests dans votre projet
+          python -m pytest tests/test_app.py  # Cette commande exécute tous les tests dans votre projet
 
   build-and-push:
     runs-on: ubuntu-latest
