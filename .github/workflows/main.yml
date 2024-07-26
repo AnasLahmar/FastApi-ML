@@ -32,6 +32,4 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:latest
-            ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:${{ github.sha }}
             ${{ secrets.DOCKER_USERNAME }}/my-fastapi-app:${{ steps.extract_version.outputs.version }}
